@@ -21,7 +21,7 @@ const startUp = async () => {
   logger.info('Running seed...')
   await runSeed()
   logger.info('Starting the server...')
-  app.listen(process.env.SERVER_PORT || 3000)
+  app.listen(process.env.PORT || 3000)
   logger.info(
     `🦊 Server is running at ${app.server?.hostname}:${app.server?.port} in ${app.server?.development ? 'development' : 'production'} mode`,
   )

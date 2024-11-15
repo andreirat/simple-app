@@ -14,7 +14,7 @@ export default swagger({
     tags: [{ name: 'Place', description: 'User management endpoints' }],
     servers: [
       {
-        url: 'http://localhost:3000',
+        url: `http://localhost:${process.env.PORT}`,
         description: 'Development server',
       },
     ],
