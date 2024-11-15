@@ -21,6 +21,8 @@ model Place {
   reviews        Review[]
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
+
+  @@index([slug, id])
 }
 
 model Location {
@@ -33,6 +35,8 @@ model Location {
   places    Place[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@index([id])
 }
 
 model Review {
@@ -47,4 +51,6 @@ model Review {
   placeId     Int
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+
+  @@index([id])
 }
