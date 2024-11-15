@@ -6,8 +6,11 @@
     "dev": "bun run --watch src/index.ts | pino-pretty",
     "build": "bun build src/index.ts",
     "seed": "ts-node prisma/seed.ts",
-    "start-prod": "NODE_ENV=production bun src/index.ts",
+    "start": "bun run src/index.ts",
     "compile": "bun build --compile --minify-whitespace --minify-syntax --target bun --outfile server ./src/index.ts"
+  },
+  "prisma": {
+    "seed": "node prisma/seed.js"
   },
   "dependencies": {
     "@elysiajs/jwt": "^1.1.1",
@@ -20,6 +23,7 @@
     "pino-pretty": "^11.2.1",
     "prettier": "^3.3.2"
   },
+  "type": "module",
   "devDependencies": {
     "bun-types": "latest",
     "prisma": "^5.22.0"

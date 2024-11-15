@@ -78,7 +78,7 @@ export async function runSeed() {
 }
 
 async function main() {
-  // await runSeed()
+  await runSeed()
   await prisma.$disconnect()
 }
 
