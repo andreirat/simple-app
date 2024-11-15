@@ -26,7 +26,7 @@ const generateData = () => {
       reviews: {
         create: Array.from({ length: 2 }).map(() => ({
           rating: faker.number.float({ min: 1, max: 5, fractionDigits: 1 }),
-          comment: faker.lorem.sentence({ max: 255, min: 20 }),
+          comment: faker.lorem.sentence({ max: 100, min: 20 }),
           isAnonymous: faker.datatype.boolean(),
           firstName: faker.datatype.boolean() ? faker.person.firstName() : null,
           lastName: faker.datatype.boolean() ? faker.person.lastName() : null,
@@ -54,7 +54,7 @@ const generateData = () => {
       reviews: {
         create: Array.from({ length: 2 }).map(() => ({
           rating: faker.number.float({ min: 1, max: 5, fractionDigits: 1 }),
-          comment: faker.lorem.sentence({ max: 255, min: 20 }),
+          comment: faker.lorem.sentence({ max: 100, min: 20 }),
           isAnonymous: faker.datatype.boolean(),
           firstName: faker.datatype.boolean() ? faker.person.firstName() : null,
           lastName: faker.datatype.boolean() ? faker.person.lastName() : null,
