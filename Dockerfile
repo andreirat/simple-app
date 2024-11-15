@@ -1,19 +1,18 @@
-FROM oven/bun AS build
+FROM oven/bun
 
 WORKDIR /app
 
-# Cache packages installation
-COPY package.json package.json
-COPY bun.lockb bun.lockb
+COPY package.json .
+COPY bun.lockb .
 
-RUN bun install
+RUN bun install --production
 
-COPY ./src ./src
+COPY src src
+COPY tsconfig.json .
 
-# Set environment variables for the build stage
 ENV PORT=8080
 ENV ENVIRONMENT=production
-ENV DATABASE_URL=""
+ENV DATABASE_URL="postgresql://demo_7gnj_user:FQTySw3OvxEREwE2YcIx2aBg9tmwXdcO@dpg-csriilt6l47c73ffgc70-a.frankfurt-postgres.render.com/demo_7gnj"
 
 RUN bun build \
 	--compile \
@@ -23,17 +22,17 @@ RUN bun build \
 	--outfile server \
 	./src/index.ts
 
+
 FROM gcr.io/distroless/base
 
 WORKDIR /app
 
 COPY --from=build /app/server server
 
-# Set environment variables for the runtime stage
 ENV PORT=8080
 ENV ENVIRONMENT=production
-ENV DATABASE_URL=""
+ENV DATABASE_URL="postgresql://demo_7gnj_user:FQTySw3OvxEREwE2YcIx2aBg9tmwXdcO@dpg-csriilt6l47c73ffgc70-a.frankfurt-postgres.render.com/demo_7gnj"
 
 CMD ["./server"]
 
-EXPOSE 8080
+EXPOSE 3000

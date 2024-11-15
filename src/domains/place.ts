@@ -25,8 +25,8 @@ export default class Place {
     try {
       const places = await database.client.place.findMany({
         include: {
-          location: true, // Include related location data
-          reviews: true, // Include related reviews
+          location: true,
+          reviews: true,
         },
       })
 

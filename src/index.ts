@@ -6,7 +6,7 @@ import services from './services'
 import app from './app'
 
 if (!services.environment.isDevelopment()) {
-  // Run prod or staging actions on start
+  logger.info('Running production scripts')
 }
 
 const shutDown = async () => {
