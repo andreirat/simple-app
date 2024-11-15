@@ -11,7 +11,7 @@ RUN bun install
 COPY ./src ./src
 
 # Set environment variables for the build stage
-ENV PORT=3000
+ENV PORT=8080
 ENV ENVIRONMENT=production
 ENV DATABASE_URL=""
 
@@ -30,10 +30,10 @@ WORKDIR /app
 COPY --from=build /app/server server
 
 # Set environment variables for the runtime stage
-ENV PORT=3000
+ENV PORT=8080
 ENV ENVIRONMENT=production
 ENV DATABASE_URL=""
 
 CMD ["./server"]
 
-EXPOSE 3000
+EXPOSE 8080
