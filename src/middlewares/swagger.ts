@@ -1,4 +1,9 @@
 import swagger from '@elysiajs/swagger'
+import services from '../services'
+
+const HOST = services.environment.isProduction()
+  ? process.env.RENDER_EXTERNAL_URL
+  : `http://localhost:${process.env.PORT}`
 
 export default swagger({
   documentation: {
@@ -14,7 +19,7 @@ export default swagger({
     tags: [{ name: 'Place', description: 'User management endpoints' }],
     servers: [
       {
-        url: `${process.env.RENDER_EXTERNAL_URL}:${process.env.PORT}`,
+        url: HOST as string,
         description: `${process.env.ENVIRONMENT}`,
       },
     ],
